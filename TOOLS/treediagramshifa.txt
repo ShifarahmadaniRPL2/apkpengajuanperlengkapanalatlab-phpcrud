@@ -1,0 +1,110 @@
+pengajuanperlengkapanalatlab/
+│
+├── index.php                 # Halaman homepage selamat datang (Navbar umum: menu loginuser dan loginguru)
+│
+├── assets/
+│   ├── js/
+│   ├── css/
+│   ├── plugins/
+│   └── images/
+│       ├── slider/
+│       ├── alat/              # Tempat menyimpan foto perlengkapan alat laboratorium
+│       └── user/              # Tempat menyimpan foto profil pengguna (Admin, Petugas, Guru)
+│  
+├── views/
+│   │
+│   ├── component/ 
+│   │   ├── tamu/
+│   │   │   ├── navbar.php    => Menu navigasi awal sebelum masuk sistem (ada opsi loginuser dan loginguru)
+│   │   │   └── footer.php
+│   │   ├── user/
+│   │   │   ├── navbar.php    => Menampilkan foto, role, namauser internal, dan menu logout
+│   │   │   ├── sidebaradmin.php    => [KENDALI] Menampilkan seluruh akses menu fitur dari No. 1 - 17
+│   │   │   └── sidebarpetugas.php  => [KENDALI] Menyembunyikan menu kelolalab, kelolakategori, kelolaalat, kelolasuplier, kelolauser
+│   │   └── guru/
+│   │       ├── navbar.php    => Menampilkan foto, role, namaguru, dan menu logout
+│   │       ├── sidebar.php   => Menu navigasi khusus guru (Dashboard, Pengajuan, Riwayat)
+│   │       └── footer.php
+│   │
+│   ├── user/   ← (AKSES INTERNAL: ADMIN & PETUGAS)
+│   │   ├── dashboard/
+│   │   │   ├── dashboardadmin.php
+│   │   │   └── dashboardpetugas.php
+│   │   ├── lab/              => [KENDALI] CRUD Lokasi Lab (Hanya ADMIN. Petugas bypass URL langsung dilempar ke 403.php)
+│   │   │   ├── index.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── show.php
+│   │   ├── kategori/         => [KENDALI] CRUD Kategori Alat (Hanya ADMIN. Petugas bypass URL langsung dilempar ke 403.php)
+│   │   │   ├── index.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── show.php
+│   │   ├── alat/             => [KENDALI] CRUD Inventaris Alat (Hanya ADMIN. Petugas bypass URL langsung dilempar ke 403.php)
+│   │   │   ├── index.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── show.php
+│   │   ├── suplier/          => [KENDALI] CRUD Pemasok Alat (Hanya ADMIN. Petugas bypass URL langsung dilempar ke 403.php)
+│   │   │   ├── index.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── show.php
+│   │   ├── user/             => [KENDALI] CRUD Akun Sistem (Hanya ADMIN. Petugas bypass URL langsung dilempar ke 403.php)
+│   │   │   ├── index.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── show.php
+│   │   ├── guru/             => [KENDALI] CRUD Akun Guru (Bisa diakses oleh ADMIN & PETUGAS)
+│   │   │   ├── index.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── show.php
+│   │   ├── pengajuan/        => Form Transaksi Permintaan Alat (Bisa diakses oleh PETUGAS & GURU)
+│   │   │   ├── index.php
+│   │   │   ├── create.php
+│   │   │   ├── edit.php
+│   │   │   └── show.php
+│   │   ├── detailpengajuan/  => Rincian butir barang dalam satu nota (Akses: ADMIN, PETUGAS, GURU)
+│   │   │   ├── index.php
+│   │   │   └── show.php
+│   │   └── laporan/          => Menu Rekapitulasi & Cetak Fisik Permintaan Ibu Nurul (Akses: ADMIN & PETUGAS)
+│   │       ├── laporanpengajuan.php
+│   │       └── cetaklaporan.php
+│   │
+│   ├── guru/   ← (AKSES EKSTERNAL: LOGIN GURU MANDIRI)
+│   │   ├── dashboardguru.php  => Tampilan rangkuman informasi pengajuan yang dibuat responsif untuk gadget Guru
+│   │   ├── profil.php         => Menampilkan informasi profil lengkap guru yang bersangkutan
+│   │   └── riwayatpengajuan.php => Rekam jejak status berkas pengajuan alat lab milik guru tersebut
+│   │
+│   ├── landing/   ← (AKSES PUBLIK / TAMU)
+│   │   ├── home.php          => Informasi ringkas beranda depan sekolah
+│   │   ├── daftaralat.php    => Katalog ketersediaan perlengkapan alat praktikum
+│   │   ├── detilalat.php     => Detail spesifikasi alat praktikum saat diklik selengkapnya
+│   │   ├── daftarkategori.php => Menampilkan kelompok alat berdasarkan kategori jenisnya
+│   │   ├── detilkategori.php
+│   │   ├── tentang.php       => Informasi profil laboratorium SMKN 1 Karang Baru
+│   │   └── kontak.php
+│   │
+│   ├── auth/   
+│   │   ├── logout.php
+│   │   ├── loginuser.php      => Gerbang masuk khusus internal (Admin & Petugas)
+│   │   ├── loginguru.php      => Gerbang masuk terpisah khusus eksternal (Guru)
+│   │   └── registerguru.php   => Form registrasi guru (Bisa diakses Petugas maupun Guru lewat loginguru)
+│   │
+│   └── errors/   ← (GLOBAL ERROR SECURITY HANDLER)
+│       ├── 404.php            # Halaman jika file kodingan tidak ditemukan
+│       ├── 403.php            # [KENDALI UTAMA] Halaman blokir jika Petugas/Guru nekat tembus URL data master Admin
+│       └── 500.php
+│
+└── proses/
+   ├── koneksi.php            # Penghubung sistem PHP ke database MySQL
+   ├── session.php            # [KENDALI UTAMA] Cek Session Role untuk memicu pengalihan otomatis ke halaman 403.php
+   ├── prosesuser.php
+   ├── prosesguru.php
+   ├── prosessuplier.php
+   ├── proseskategori.php
+   ├── proseslab.php
+   ├── prosesalat.php
+   ├── prosespengajuan.php    # Sinkronisasi logika stok alat praktikum saat diajukan
+   └── proseslaporan.php
