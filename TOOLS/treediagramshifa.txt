@@ -19,11 +19,11 @@ pengajuanperlengkapanalatlab/
 │   │   │   └── footer.php
 │   │   ├── user/
 │   │   │   ├── navbar.php    => Menampilkan foto, role, namauser internal, dan menu logout
-│   │   │   ├── sidebaradmin.php    => [KENDALI] Menampilkan seluruh akses menu fitur dari No. 1 - 17
+│   │   │   ├── sidebaradmin.php    => [KENDALI] Menampilkan seluruh akses menu fitur dari No. 1 - 16
 │   │   │   └── sidebarpetugas.php  => [KENDALI] Menyembunyikan menu kelolalab, kelolakategori, kelolaalat, kelolasuplier, kelolauser
 │   │   └── guru/
 │   │       ├── navbar.php    => Menampilkan foto, role, namaguru, dan menu logout
-│   │       ├── sidebar.php   => Menu navigasi khusus guru (Dashboard, Pengajuan, Riwayat)
+│   │       ├── sidebar.php   => Menu navigasi khusus guru (Dashboard, Pengajuan)
 │   │       └── footer.php
 │   │
 │   ├── user/   ← (AKSES INTERNAL: ADMIN & PETUGAS)
@@ -60,22 +60,18 @@ pengajuanperlengkapanalatlab/
 │   │   │   ├── create.php
 │   │   │   ├── edit.php
 │   │   │   └── show.php
-│   │   ├── pengajuan/        => Form Transaksi Permintaan Alat (Bisa diakses oleh PETUGAS & GURU)
+│   │   ├── pengajuan/        => [SEDERHANA] Halaman transaksi pengajuan alat (Bisa diakses oleh PETUGAS & GURU)
 │   │   │   ├── index.php
 │   │   │   ├── create.php
 │   │   │   ├── edit.php
-│   │   │   └── show.php
-│   │   ├── detailpengajuan/  => Rincian butir barang dalam satu nota (Akses: ADMIN, PETUGAS, GURU)
-│   │   │   ├── index.php
 │   │   │   └── show.php
 │   │   └── laporan/          => Menu Rekapitulasi & Cetak Fisik Permintaan Ibu Nurul (Akses: ADMIN & PETUGAS)
 │   │       ├── laporanpengajuan.php
 │   │       └── cetaklaporan.php
 │   │
 │   ├── guru/   ← (AKSES EKSTERNAL: LOGIN GURU MANDIRI)
-│   │   ├── dashboardguru.php  => Tampilan rangkuman informasi pengajuan yang dibuat responsif untuk gadget Guru
-│   │   ├── profil.php         => Menampilkan informasi profil lengkap guru yang bersangkutan
-│   │   └── riwayatpengajuan.php => Rekam jejak status berkas pengajuan alat lab milik guru tersebut
+│   │   ├── dashboardguru.php  => Halaman beranda utama milik guru untuk memantau status pengajuan
+│   │   └── profil.php         => Menampilkan informasi profil lengkap guru yang bersangkutan
 │   │
 │   ├── landing/   ← (AKSES PUBLIK / TAMU)
 │   │   ├── home.php          => Informasi ringkas beranda depan sekolah
@@ -88,7 +84,7 @@ pengajuanperlengkapanalatlab/
 │   │
 │   ├── auth/   
 │   │   ├── logout.php
-│   │   ├── loginuser.php      => Gerbang masuk khusus internal (Admin & Petugas)
+│   │   ├── login.php          => Menyesuaikan nama file No. 2 di Excel (Pintu masuk Admin & Petugas)
 │   │   ├── loginguru.php      => Gerbang masuk terpisah khusus eksternal (Guru)
 │   │   └── registerguru.php   => Form registrasi guru (Bisa diakses Petugas maupun Guru lewat loginguru)
 │   │
@@ -106,5 +102,5 @@ pengajuanperlengkapanalatlab/
    ├── proseskategori.php
    ├── proseslab.php
    ├── prosesalat.php
-   ├── prosespengajuan.php    # Sinkronisasi logika stok alat praktikum saat diajukan
+   ├── prosespengajuan.php    # Memproses transaksi input pengajuan alat langsung tanpa detail tabel
    └── proseslaporan.php
